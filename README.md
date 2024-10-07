@@ -22,13 +22,13 @@ This PowerShell script automates the creation of user accounts in Active Directo
 
 1. **Download VirtualBox**:
    - Install Oracle VM VirtualBox Base Packages for macOS.
-   - ![Virtual Machine General Information](screenshots/VM_General_Information.png)
+   - ![Virtual Machine General Information](Screenshots/VM_General_Information.png)
    *Virtual Machine General Information*
 
 2. **Set Up Windows Server 2022**:
    - Download and configure the ISO file for Windows Server 2022 in VirtualBox.
    - Install Active Directory Domain Services (AD DS).
-   - ![Confirmation Installation Selections](screenshots/Confirmation_Installation_Selections.png)
+   - ![Confirmation Installation Selections](Screenshots/Confirmation_Installation_Selections.png)
    *Confirmation of AD DS installation selections.*
 
 3. **Enable Clipboard Sharing**:
