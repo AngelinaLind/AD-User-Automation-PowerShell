@@ -20,7 +20,7 @@ if (-not ($UserName -and $Email -and $Department -and $JobTitle)) {
     exit
 }
 
-# Check email format (regex validation allowing '.local' domains)
+# Check email format (regex validation allowing '.local' domains as my domain is "testdomain.local")
 if ($Email -notmatch "^[\w\.\-]+@([\w\-]+\.)+[\w\-]{2,7}$") {
     Write-Host "Invalid email format." -ForegroundColor Red
     exit
@@ -49,7 +49,7 @@ try {
         -AccountPassword (ConvertTo-SecureString $Password -AsPlainText -Force) 
         -Enabled $true 
         -PasswordNeverExpires $true 
-        -Path "CN=Users,DC=testdomain,DC=local"
+        -Path "CN=Users,DC=testdomain,DC=local" # In ADUC I had Users as CN, not OU
 
     Write-Host "User $UserName created successfully." -ForegroundColor Green
 
@@ -71,14 +71,14 @@ try {
 # Email the password to the user
 try {
     $SmtpServer = "smtp.gmail.com" 
-    $SmtpFrom = "YOUR-EMAIL"
+    $SmtpFrom = "your-gmail-address"
     $SmtpTo = $Email
     $MessageSubject = "Your new account password"
     $MessageBody = "Hello $UserName,nYour account has been created. Your password is: $Password"
 
     $SmtpClient = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
     $SmtpClient.EnableSsl = $true
-    $SmtpClient.Credentials = New-Object System.Net.NetworkCredential("YOUR_EMAIL@gmail.com", "PASSWORD")
+    $SmtpClient.Credentials = New-Object System.Net.NetworkCredential("your-gmail-address@gmail.com", "your-password")
 
     $SmtpClient.Send($SmtpFrom, $SmtpTo, $MessageSubject, $MessageBody)
 
@@ -87,7 +87,7 @@ try {
     Write-Host "Error sending email: $_" -ForegroundColor Red
 }
 
-$logFile = "C:\Users\Administrator\Documents\CreateUser\CreateUserLogFile.log"
+$logFile = "C:\Users\Administrator\Documents\CreateUser\CreateUserLogFile.log" # Check your path
 function Log-Message {
     param (
         [string]$Message
