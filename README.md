@@ -41,4 +41,7 @@ This PowerShell script automates the creation of user accounts in Active Directo
 3. Run the script with the required parameters:
 
 ```powershell
-.\CreateUser.ps1 -UserName "jdoe" -Email "jdoe@testdomain.local" -Department "IT" -JobTitle "Developer"
+.\CreateUser.ps1 -UserName "Pekka Suomalainen" -Email "pekka@testdomain.local" -Department "IT" -JobTitle "Developer"
+```
+   - ![ADUC_New_Users_Created](Screenshots/ADUC_New_Users_Created.png)
+   *ADUC_New_Users_Created*
